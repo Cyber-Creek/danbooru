@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   self.responder = ApplicationResponder
 
+  skip_before_action :verify_authenticity_token
+
   skip_forgery_protection if: -> { SessionLoader.new(request).has_api_authentication? }
   before_action :check_get_body
   before_action :reset_current_user
