@@ -31,7 +31,7 @@ else
   # low_latency=true means TCP_NODELAY
   # backlog=1024 means socket listen backlog
   # https://github.com/puma/puma/blob/319f84db13ee59f7b24885cec686d5c714998a4c/lib/puma/dsl.rb#L193
-  bind "tcp://0.0.0.0:3000?low_latency=true&backlog=1024"
+  bind "tcp://0.0.0.0:80?low_latency=true&backlog=1024"
 end
 
 # The number of `workers` to boot in clustered mode. Workers are forked web
