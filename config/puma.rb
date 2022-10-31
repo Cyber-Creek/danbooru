@@ -24,7 +24,7 @@
 
 # The server port or listening address. Default is http://0.0.0.0:3000.
 if ENV.has_key?("PUMA_PORT")
-  port ENV["PUMA_PORT"]
+  port ENV["80"]
 elsif ENV.has_key?("PUMA_BIND")
   bind ENV["PUMA_BIND"]
 else
