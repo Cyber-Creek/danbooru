@@ -23,7 +23,7 @@
 # @see https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server
 
 # The server port or listening address. Default is http://0.0.0.0:3000.
-if ENV.has_key?("PUMA_PORT")
+if ENV.has_key?("80")
   port ENV["80"]
 elsif ENV.has_key?("PUMA_BIND")
   bind ENV["PUMA_BIND"]
