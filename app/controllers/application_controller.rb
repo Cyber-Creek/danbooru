@@ -158,18 +158,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def render_error_page(status, exception = nil, message: "", template: "static/error", format: request.format.symbol)
-    @exception = exception
-    @expected = status < 500
-    @message = message.to_s.encode("utf-8", invalid: :replace, undef: :replace)
-    @backtrace = Rails.backtrace_cleaner.clean(@exception.backtrace) if @exception
-    format = :html unless format.in?(%i[html json xml js atom])
-
-    @api_response = { success: false, error: @exception.class.to_s, message: @message, backtrace: @backtrace }
-
-    # if InvalidAuthenticityToken was raised, CurrentUser isn't set so we have to use the blank layout.
-    layout = CurrentUser.user.present? ? "default" : "blank"
-
     DanbooruLogger.log(@exception, expected: @expected) if @exception
     render template, layout: layout, status: status, formats: format
   rescue ActionView::MissingTemplate
